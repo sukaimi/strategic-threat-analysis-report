@@ -1,0 +1,254 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* SAF Tri-Service scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F3F3F3;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C4C4C4;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6B6B6B;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #C4C4C4 #F3F3F3;
+}
+
+/* Pulse animation for live indicators */
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 4px currentColor;
+  }
+  50% {
+    opacity: 0.6;
+    box-shadow: 0 0 12px currentColor;
+  }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Focus pulse for tracked vessel on map */
+@keyframes focus-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.focus-pulse {
+  animation: focus-pulse 1.5s ease-in-out infinite;
+}
+
+/* Map tooltip — dark for contrast against map */
+.map-tooltip {
+  position: absolute;
+  pointer-events: none;
+  background: rgba(31, 31, 31, 0.95);
+  border: 1px solid #003A70;
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 12px;
+  color: #FFFFFF;
+  z-index: 50;
+  max-width: 280px;
+  backdrop-filter: blur(4px);
+}
+
+/* Threat bar animation */
+@keyframes bar-fill {
+  from { width: 0%; }
+}
+
+.bar-fill {
+  animation: bar-fill 0.8s ease-out;
+}
+
+/* SAF section cards */
+.saf-card {
+  background: #FFFFFF;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  padding: 16px;
+  transition: box-shadow 0.2s ease;
+}
+
+.saf-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* SAF buttons */
+.saf-btn-primary {
+  background: #003A70;
+  color: #FFFFFF;
+  border-radius: 4px;
+  padding: 8px 20px;
+  font-weight: 600;
+  font-size: 13px;
+  transition: background 0.2s ease;
+}
+
+.saf-btn-primary:hover {
+  background: #004D99;
+}
+
+.saf-btn-secondary {
+  background: transparent;
+  color: #003A70;
+  border: 1.5px solid #003A70;
+  border-radius: 4px;
+  padding: 7px 20px;
+  font-weight: 600;
+  font-size: 13px;
+  transition: all 0.2s ease;
+}
+
+.saf-btn-secondary:hover {
+  background: #003A70;
+  color: #FFFFFF;
+}
+
+/* Leaflet overrides — dark theme */
+.vessel-icon, .aircraft-icon, .region-label-icon, .custom-cluster-icon, .sg-dot,
+.djinn-infra-icon, .djinn-annotation-icon, .settlement-label {
+  background: transparent !important;
+  border: none !important;
+}
+
+/* Sanctioned vessel red pulsing glow */
+@keyframes sanctioned-pulse {
+  0%, 100% { box-shadow: 0 0 6px 2px rgba(239, 68, 68, 0.6); }
+  50% { box-shadow: 0 0 14px 6px rgba(239, 68, 68, 0.3); }
+}
+
+.sanctioned-vessel {
+  animation: sanctioned-pulse 1.5s ease-in-out infinite;
+  border-radius: 50%;
+}
+
+.leaflet-tooltip {
+  background: #1F1F1F !important;
+  border: 1px solid #003A70 !important;
+  color: #d1d5db !important;
+  font-family: monospace;
+  font-size: 11px;
+  padding: 6px 10px;
+}
+
+.leaflet-tooltip-top::before {
+  border-top-color: #003A70 !important;
+}
+
+.range-label, .border-label, .tss-label, .zone-label {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: #4a6fa5 !important;
+  font-family: monospace !important;
+  font-size: 9px !important;
+}
+
+.tss-label {
+  color: inherit !important;
+  font-size: 8px !important;
+  opacity: 0.7;
+}
+
+.zone-label {
+  color: #818cf8 !important;
+  font-size: 7px !important;
+  opacity: 0.6;
+}
+
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.6); }
+  70% { box-shadow: 0 0 0 15px rgba(251, 191, 36, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0); }
+}
+
+.focused-vessel {
+  animation: pulse-ring 1.5s infinite;
+  border-radius: 50%;
+}
+
+/* Hide Leaflet attribution on small screens */
+.leaflet-control-attribution {
+  font-size: 8px !important;
+  opacity: 0.5;
+}
+
+/* ---------- Mobile responsive: bottom sheet transitions ---------- */
+
+/* Slide-up animation for the bottom sheet container */
+@keyframes bottom-sheet-slide-up {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes bottom-sheet-panel-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.bottom-sheet-enter {
+  animation: bottom-sheet-slide-up 0.2s ease-out forwards;
+}
+
+.bottom-sheet-panel {
+  animation: bottom-sheet-panel-up 0.3s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+}
+
+/* Touch-friendly scrolling */
+.touch-scroll-y {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
+}
+
+/* Safe area inset for bottom nav (notched devices) */
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Adjust Leaflet zoom control position on mobile to avoid bottom nav overlap */
+@media (max-width: 1023px) {
+  .leaflet-top.leaflet-right {
+    top: 8px !important;
+    right: 8px !important;
+  }
+
+  .leaflet-control-zoom {
+    margin-top: 0 !important;
+  }
+
+  /* Hide legend on mobile — it overlaps with bottom nav */
+  .map-legend-mobile-hide {
+    display: none !important;
+  }
+}
+
+/* Ensure body has no scroll when bottom sheet is up */
+@media (max-width: 1023px) {
+  body {
+    overscroll-behavior: none;
+  }
+}

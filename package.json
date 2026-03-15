@@ -1,0 +1,35 @@
+{
+  "name": "star-merlion",
+  "version": "2.0.0",
+  "description": "AI-Native Maritime & Airspace Intelligence Platform",
+  "private": true,
+  "scripts": {
+    "dev:api": "node api/src/server.js",
+    "dev:ws": "node ws/src/server.js",
+    "dev:cron": "node cron/src/scheduler.js",
+    "dev:frontend": "cd frontend && npm run dev",
+    "test": "node --test api/tests/*.test.js",
+    "test:api": "node --test api/tests/*.test.js",
+    "db:init": "node scripts/init-db.js",
+    "db:purge": "node scripts/purge-db.js",
+    "vault:init": "node scripts/init-vault.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "better-sqlite3": "^11.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.0",
+    "express": "^4.21.0",
+    "fast-xml-parser": "^5.5.5",
+    "helmet": "^8.0.0",
+    "node-schedule": "^2.1.1",
+    "pdfkit": "^0.17.2",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "supertest": "^7.0.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

@@ -1,0 +1,17 @@
+node_modules/
+.env
+data/*.db
+data/*.db-wal
+data/*.db-shm
+vault/star-merlion/analyses/
+vault/star-merlion/incidents/
+vault/star-merlion/vessels/
+vault/star-merlion/daily-summaries/
+vault/star-merlion/weekly-summaries/
+vault/star-merlion/archive/
+api/data/
+api/vault/
+.next/
+dist/
+*.log
+.DS_Store
